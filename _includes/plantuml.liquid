@@ -11,28 +11,15 @@
   // Adapted from
   // https://github.com/markushedvall/plantuml-encoder/blob/master/lib/encode64.js
   function encodeToPlantumlEncoded(text) {
-    function encode6bit(b) {
-      return "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_".at(b) || "?"
-    }
-    
-    function append3bytes(b1 = 0, b2 = 0, b3 = 0) {
-      var c1 = b1 >> 2
-      var c2 = ((b1 & 0x3) << 4) | (b2 >> 4)
-      var c3 = ((b2 & 0xF) << 2) | (b3 >> 6)
-      var c4 = b3 & 0x3F
-      var r = ''
-      r += encode6bit(c1 & 0x3F)
-      r += encode6bit(c2 & 0x3F)
-      r += encode6bit(c3 & 0x3F)
-      r += encode6bit(c4 & 0x3F)
-      return r
+    function encodeFromB64(c) {
+      const i = "=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".indexOf(c)
+      return "00123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_".at(i) || "?"
     }
 
     function encode(data) {
       var r = ''
-      for (var i = 0; i < data.length; i += 3) {
-        r += append3bytes(data.charCodeAt(i), data.charCodeAt(i + 1), data.charCodeAt(i + 2))
-      }
+      const b64 = btoa(data)
+      for (const c of b64) { r += encodeFromB64(c) }
       return r
     }
 
