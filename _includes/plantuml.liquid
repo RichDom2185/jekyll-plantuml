@@ -30,9 +30,10 @@
       | split: '</code></pre>'
     %}
     {% capture text %}{% include capturehtml.liquid text=contents.first %}{% endcapture %}
-    <img src="https://httpstat.us/200/PUML-PLACEHOLDER-{{ forloop.index }}">
+    {%- assign placeholder_name = "https://httpstat.us/200/PUML-PLACEHOLDER-" | append: forloop.index -%}
+    <img src="{{ placeholder_name }}">
     <script>
-      document.querySelector("img[src='https://httpstat.us/200/PUML-PLACEHOLDER-{{ forloop.index }}']").src = `https://www.plantuml.com/plantuml/png/${encodeToPlantumlEncoded(pako.deflateRaw(`{{ text }}`.trim(), { level: 9, to: 'string' }))}`
+      document.querySelector("img[src='{{ placeholder_name }}']").src = `https://www.plantuml.com/plantuml/png/${encodeToPlantumlEncoded(pako.deflateRaw(`{{ text }}`.trim(), { level: 9, to: 'string' }))}`
     </script>
     {%- for tail in contents offset:1 -%}
       {{ tail }}</code></pre>
