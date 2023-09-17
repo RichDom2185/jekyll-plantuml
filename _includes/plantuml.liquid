@@ -16,14 +16,7 @@
       return "00123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_".at(i) || "?"
     }
 
-    function encode(data) {
-      var r = ''
-      const b64 = btoa(data)
-      for (const c of b64) { r += encodeFromB64(c) }
-      return r
-    }
-
-    return encode(text)
+    return [...btoa(text)].map(encodeFromB64).join("")
   }
 </script>
 {{ nodes.first }}
