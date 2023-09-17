@@ -39,7 +39,7 @@
     {% capture text %}{% include capturehtml.liquid text=contents.first %}{% endcapture %}
     <img src="https://httpstat.us/200/PUML-PLACEHOLDER-{{ forloop.index }}">
     <script>
-      document.querySelector("img[src='https://httpstat.us/200/PUML-PLACEHOLDER-1']").src = `https://www.plantuml.com/plantuml/png/${encodeToPlantumlEncoded(pako.deflateRaw(`{{ text }}`.trim(), { level: 9, to: 'string' }))}`
+      document.querySelector("img[src='https://httpstat.us/200/PUML-PLACEHOLDER-{{ forloop.index }}']").src = `https://www.plantuml.com/plantuml/png/${encodeToPlantumlEncoded(pako.deflateRaw(`{{ text }}`.trim(), { level: 9, to: 'string' }))}`
     </script>
     {%- for tail in contents offset:1 -%}
       {{ tail }}</code></pre>
