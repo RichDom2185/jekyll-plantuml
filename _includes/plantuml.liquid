@@ -12,15 +12,7 @@
   // https://github.com/markushedvall/plantuml-encoder/blob/master/lib/encode64.js
   function encodeToPlantumlEncoded(text) {
     function encode6bit(b) {
-      if (b < 10) { return String.fromCharCode(48 + b) }
-      b -= 10
-      if (b < 26) { return String.fromCharCode(65 + b) }
-      b -= 26
-      if (b < 26) { return String.fromCharCode(97 + b) }
-      b -= 26
-      if (b === 0) { return '-' }
-      if (b === 1) { return '_' }
-      return '?'
+      return "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_".at(b) || "?"
     }
     
     function append3bytes(b1 = 0, b2 = 0, b3 = 0) {
