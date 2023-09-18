@@ -31,7 +31,13 @@
     %}
     {%- capture text %}{% include capturehtml.liquid text=contents.first %}{% endcapture %}
     {%- assign placeholder_name = "https://httpstat.us/200/PUML-PLACEHOLDER-" | append: forloop.index -%}
+    {% if include.only_img -%}
     <img src="{{ placeholder_name }}">
+    {% else -%}
+    <p>
+      <img src="{{ placeholder_name }}">
+    </p>
+    {% endif -%}
     <script>
       document.querySelector("img[src='{{ placeholder_name }}']").src = `https://www.plantuml.com/plantuml/png/${encodeToPlantumlEncoded(pako.deflateRaw(`{{ text }}`.trim(), { level: 9, to: 'string' }))}`
     </script>
