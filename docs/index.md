@@ -21,16 +21,16 @@ It converts your code blocks tagged with either the `plantuml` or `puml` languag
 
 * Markdown
 
-    ````markdown
-    ```puml
-    Alice -> Bob: Hi there!
-    Bob --> Alice: Hello to you too!
-    ```
-    ````
+  ````markdown
+  ```puml
+  Alice -> Bob: Hi there!
+  Bob --> Alice: Hello to you too!
+  ```
+  ````
 
 * Result:
 
-    ```puml
-    Alice -> Bob: Hi there!
-    Bob --> Alice: Hello to you too!
-    ```
+  ```puml
+  Alice -> Bob: Hi there!
+  Bob --> Alice: Hello to you too!
+  ```
