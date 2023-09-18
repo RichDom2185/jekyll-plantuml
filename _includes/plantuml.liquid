@@ -29,7 +29,7 @@
       | strip
       | split: '</code></pre>'
     %}
-    {% capture text %}{% include capturehtml.liquid text=contents.first %}{% endcapture %}
+    {%- capture text %}{% include capturehtml.liquid text=contents.first %}{% endcapture %}
     {%- assign placeholder_name = "https://httpstat.us/200/PUML-PLACEHOLDER-" | append: forloop.index -%}
     <img src="{{ placeholder_name }}">
     <script>
