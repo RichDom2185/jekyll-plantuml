@@ -8,7 +8,7 @@ layout: demo
 
 For the full guide (usages, etc.), view the project on [GitHub]({{ site.github.repository_url }}).
 
-<!-- markdownlint-disable-next-line blanks-around-headers -->
+<!-- markdownlint-disable-next-line blanks-around-headings -->
 ## Table of Contents
 {: .no_toc}
 
